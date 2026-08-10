@@ -132,7 +132,7 @@
 
     <section class="screen hidden" id="scr-lab">
       <div class="headrow"><button class="btn" data-go="scr-menu">◂ MENU</button>
-        <h2>SYNTHESIS LAB</h2><span class="sub">2–10 reagents · real bonds only</span><span class="sp"></span><span
+        <h2>SYNTHESIS LAB</h2><span class="sub">2–5 reagents · real bonds only</span><span class="sp"></span><span
           class="tag" id="lab-count"></span>
       </div>
       <div id="lab-body">

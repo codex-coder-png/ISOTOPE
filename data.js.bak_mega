@@ -550,35 +550,4 @@ window.DATA = {};
   if(typeof ELEMS!=='undefined') Object.values(ELEMS).forEach(buildChoices);
   if(typeof MOLDEF!=='undefined') Object.values(MOLDEF).forEach(function(m){ if(m.mol) buildChoices(m); });
 })();
-
-/* ISO_MEGA_DATA */
-(function(){
-if(window.__ISO_MEGA_DATA__)return;window.__ISO_MEGA_DATA__=true;
-var NEW=[
-['C+H+H+H+H+O','CH4O','Methanol',205,{rate:1.1},'toxic','Wood spirit: volatile solvent.','C+4H+O'],
-['C+C+H+H+H+H+O','C2H6O','Ethanol',30,{rate:1.15,dmg:1.05},'burn','Fermented fuel: ignites shots.','2C+6H+O'],
-['C+C+H+H+H+H+O+O','C2H4O2','Acetic Acid',60,{dmg:1.2},'acid','Vinegar: corrodes armor.','2C+4H+2O'],
-['H+H+O+O+O+O+S','H2SO4','Sulfuric Acid',50,{dmg:1.35},'corrosive','King of acids: melts everything.','2H+S+4O'],
-['H+H+H+O+O+O+O+P','H3PO4','Phosphoric Acid',90,{dmg:1.15,rate:1.05},'acid','Rust remover: acidic bite.','3H+P+4O'],
-['K+Mn+O+O+O+O','KMnO4','Permanganate',285,{dmg:1.25},'burn','Purple oxidizer: fierce burns.','K+Mn+4O'],
-['H+Na+C+O+O+O','NaHCO3','Bicarbonate',190,{hp:1.15},'vital','Baking soda: soothing buffer.','H+Na+C+3O'],
-['C+H+H+H+H+N+N+O','CH4N2O','Urea',170,{hp:1.1,rate:1.05},'vital','Nitrogen carrier: steady regen.','C+4H+2N+O'],
-['H+H+H+H+N+N+O+O+O','N2H4O3','Ammonium Nitrate',35,{dmg:1.3},'blast','Fertilizer explosive: huge blasts.','4H+2N+3O'],
-['C+C+H+H+H+H+H+H+O+S','C2H6OS','DMSO',300,{rate:1.15},'phase','Solvent that slips through membranes.','2C+6H+O+S'],
-['C+C+H+H+H+H+H+N+O+O','C2H5NO2','Glycine',140,{dmg:1.1},'charm','Neurotransmitter: shots turn foes.','2C+5H+N+2O']
-];
-NEW.forEach(function(row){
-var k=row[0];
-if(MOLDEF[k])return;
-var m=M(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]);
-MOLDEF[k]=m;
-RECIPES[k]=k;
-m.signatures=makeSignatureChoices(m);
-var s=m.signatures;
-var main=Object.assign({},m.act,{id:'main_'+(m.token||k),slot:0,main:true,power:1.06});
-m.act=main;
-m.choices=[main,Object.assign({},s[0],{slot:1,main:false}),Object.assign({},s[1],{slot:2,main:false})];
-m.signatures=m.choices;
-});
-})();
 })();
